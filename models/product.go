@@ -8,21 +8,22 @@ type metadata map[string]interface{}
 
 // Host Model.
 type Product struct {
-	ID       string   `structs:"id" json:"id" bson:"_id" db:"id"`
-	Name     string   `structs:"name" json:"name" bson:"name" db:"name"`
-	Price 	 int 	  `structs:"price" json:"price" bson:"price" db:"price"`
-	Status   string   `structs:"status" json:"status" bson:"status" db:"status"` // Can be : OnSelling, OffSelling
-	Quantity int      `structs:"quantity" json:"quantity" bson:"quantity" db:"quantity"`
+	ID        string   `structs:"id" json:"id" bson:"_id" db:"id"`
+	ProductID string  `structs:"product_id" json:"product_id" bson:"product_id" db:"product_id"`
+	Name      string   `structs:"name" json:"name" bson:"name" db:"name"`
+	Price 	  int 	  `structs:"price" json:"price" bson:"price" db:"price"`
+	Status    string   `structs:"status" json:"status" bson:"status" db:"status"` // Can be : OnSelling, OffSelling
+	Quantity  int      `structs:"quantity" json:"quantity" bson:"quantity" db:"quantity"`
 }
 
 // Map convert struct into map.
-func (prd *Product) Map() map[string]interface{} {
-	return structs.Map(prd)
+func (product *Product) Map() map[string]interface{} {
+	return structs.Map(product)
 }
 
 // Names return field names of Host model.
-func (prd *Product) Names() []string {
-	fields := structs.Fields(prd)
+func (product *Product) Names() []string {
+	fields := structs.Fields(product)
 
 	names := make([]string, len(fields))
 	for i, field := range fields {
