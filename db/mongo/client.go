@@ -3,10 +3,7 @@ package mongo
 import (
 	"context"
 	"fmt"
-<<<<<<< HEAD
-=======
-
->>>>>>> feature/docker
+	
 	"github.com/pkg/errors"
 	uuid "github.com/satori/go.uuid"
 	"github.com/spf13/viper"

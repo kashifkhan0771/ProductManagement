@@ -99,6 +99,6 @@ definitions:
       Price:
         type: "integer"
       Status:
-        type: "integer"
+        type: "string"
       Quantity:
         type: "integer"
