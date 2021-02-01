@@ -1,0 +1,104 @@
+---
+swagger: "2.0"
+info:
+  description: "A Product Management System"
+  version: "1.0"
+  title: "Product Management"
+host: "localhost:8080"
+basePath: "/"
+schemes:
+  - "http"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+  /addProduct:
+    post:
+      operationId: "addProduct"
+      parameters:
+        - in: "body"
+          name: "product"
+          description: "product's detail"
+          required: false
+          schema:
+            $ref: "#/definitions/Product"
+      responses:
+        201:
+          description: "Product added"
+          schema:
+            $ref: "#/definitions/Product"
+        409:
+          description: "product already exist"
+        500:
+          description: "internal server error"
+        400:
+          description: "bad request"
+  /Product/{ID}:
+    get:
+      operationId: "getProduct"
+      parameters:
+        - in: "path"
+          type: "string"
+          name: "ID"
+          required: true
+          description: "UUID of the product"
+      description: "return product based on UUID"
+      responses:
+        200:
+          description: "product response"
+          schema:
+            $ref: "#/definitions/Product"
+        404:
+          description: "product not found"
+        500:
+          description: "internal server error"
+
+    put:
+      operationId: "editProduct"
+      parameters:
+        - in: "path"
+          type: "string"
+          name: "ID"
+          required: true
+          description: "UUID of the product"
+      responses:
+        200:
+          description: "product updated"
+          schema:
+            $ref: "#/definitions/Product"
+        500:
+          description: "internal server error"
+        400:
+          description: "bad request"
+    delete:
+      operationId: "deleteProduct"
+      parameters:
+        - in: "path"
+          name: "ID"
+          type: "string"
+          description: "UUID of the product"
+          required: true
+      responses:
+        204:
+          description: "product deleted"
+        500:
+          description: "internal server error"
+        400:
+          description: "bad request"
+definitions:
+  Product:
+    type: "object"
+    properties:
+      ID:
+        type: "string"
+      ProductID:
+        type: "string"
+      Name:
+        type: "string"
+      Price:
+        type: "integer"
+      Status:
+        type: "integer"
+      Quantity:
+        type: "integer"
