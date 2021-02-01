@@ -6,21 +6,12 @@ import (
 
 // Product Model.
 type Product struct {
-<<<<<<< HEAD
 	ID        string   `structs:"id" json:"id" bson:"_id" db:"id"`
 	ProductID string  `structs:"product_id" json:"product_id" bson:"product_id" db:"product_id"`
 	Name      string   `structs:"name" json:"name" bson:"name" db:"name"`
 	Price 	  int 	  `structs:"price" json:"price" bson:"price" db:"price"`
 	Status    string   `structs:"status" json:"status" bson:"status" db:"status"` // Can be : OnSelling, OffSelling
 	Quantity  int      `structs:"quantity" json:"quantity" bson:"quantity" db:"quantity"`
-=======
-	ID        string `structs:"id" json:"id" bson:"_id" db:"id"`
-	ProductID string `structs:"product_id" json:"product_id" bson:"product_id" db:"product_id"`
-	Name      string `structs:"name" json:"name" bson:"name" db:"name"`
-	Price     int    `structs:"price" json:"price" bson:"price" db:"price"`
-	Status    string `structs:"status" json:"status" bson:"status" db:"status"` // Can be : OnSelling, OffSelling
-	Quantity  int    `structs:"quantity" json:"quantity" bson:"quantity" db:"quantity"`
->>>>>>> feature/docker
 }
 
 // Map convert struct into map.
