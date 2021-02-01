@@ -33,7 +33,7 @@ type Product struct {
 	Quantity int64 `json:"Quantity,omitempty"`
 
 	// status
-	Status int64 `json:"Status,omitempty"`
+	Status string `json:"Status,omitempty"`
 }
 
 // Validate validates this product

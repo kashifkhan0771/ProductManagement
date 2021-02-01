@@ -11,9 +11,9 @@ func TestProduct_Map(t *testing.T) {
 		ID        string
 		ProductID string
 		Name      string
-		Price     int
+		Price     int64
 		Status    string
-		Quantity  int
+		Quantity  int64
 	}
 	tests := []struct {
 		name   string
@@ -23,37 +23,20 @@ func TestProduct_Map(t *testing.T) {
 		{
 			name: "Success - Get Product 1 Map",
 			fields: fields{
-<<<<<<< HEAD
 				ID: "001",
 				ProductID: "Prd 001",
 				Name: "Product Name 1",
-				Price: 2350,
+				Price: int64(2350),
 				Status: "OnSelling",
-				Quantity: 23,
+				Quantity: int64(23),
 			},
 			want: map[string]interface{}{
 				"id": "001",
 				"product_id": "Prd 001",
 				"name": "Product Name 1",
-				"price": 2350,
+				"price": int64(2350),
 				"status": "OnSelling",
-				"quantity": 23,
-=======
-				ID:        "001",
-				ProductID: "Prd 001",
-				Name:      "Product Name 1",
-				Price:     2350,
-				Status:    "OnSelling",
-				Quantity:  23,
-			},
-			want: map[string]interface{}{
-				"id":         "001",
-				"product_id": "Prd 001",
-				"name":       "Product Name 1",
-				"price":      2350,
-				"status":     "OnSelling",
-				"quantity":   23,
->>>>>>> feature/docker
+				"quantity": int64(23),
 			},
 		},
 	}
@@ -82,9 +65,9 @@ func TestProduct_Names(t *testing.T) {
 		ID        string
 		ProductID string
 		Name      string
-		Price     int
+		Price     int64
 		Status    string
-		Quantity  int
+		Quantity  int64
 	}
 	tests := []struct {
 		name   string
@@ -94,24 +77,15 @@ func TestProduct_Names(t *testing.T) {
 		{
 			name: "Success - Get Product Field Names",
 			fields: fields{
-<<<<<<< HEAD
 				ID: "001",
 				ProductID: "Prod 001",
 				Name: "Product Name 1",
 				Price: 2350,
 				Status: "OnSelling",
 				Quantity: 23,
-=======
-				ID:        "001",
-				ProductID: "Prod 001",
-				Name:      "Product Name 1",
-				Price:     2350,
-				Status:    "OnSelling",
-				Quantity:  23,
->>>>>>> feature/docker
-			},
-			want: []string{"id", "product_id", "name", "price", "status", "quantity"},
 		},
+		want: []string{"id", "product_id", "name", "price", "status", "quantity"},
+	},
 	}
 	for _, tt := range tests {
 		tt := tt
