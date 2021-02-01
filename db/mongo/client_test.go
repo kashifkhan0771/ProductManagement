@@ -12,7 +12,11 @@ import (
 func Test_client_AddProduct(t *testing.T) {
 	t.Parallel()
 	_ = os.Setenv("DB_PORT", "27017")
+<<<<<<< HEAD
 	_ = os.Setenv("DB_HOST", "localhost")
+=======
+	_ = os.Setenv("DB_HOST", "product-management-mongo-db")
+>>>>>>> feature/docker
 
 	type args struct {
 		product *models.Product
@@ -26,6 +30,7 @@ func Test_client_AddProduct(t *testing.T) {
 			name: "Success - Add Product to db",
 			args: args{product: &models.Product{
 				ProductID: "Product 001",
+<<<<<<< HEAD
 				Name: "product name 1",
 				Price: 2300,
 				Status: "OnSelling",
@@ -37,6 +42,20 @@ func Test_client_AddProduct(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+=======
+				Name:      "product name 1",
+				Price:     2300,
+				Status:    "OnSelling",
+				Quantity:  34,
+			}},
+			wantErr: false,
+		},
+	}
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+>>>>>>> feature/docker
 			c, _ := NewClient(db.Option{})
 			if c != nil {
 				_, err := c.AddProduct(tt.args.product)
@@ -53,7 +72,11 @@ func Test_client_AddProduct(t *testing.T) {
 func Test_client_DeleteHost(t *testing.T) {
 	t.Parallel()
 	_ = os.Setenv("DB_PORT", "27017")
+<<<<<<< HEAD
 	_ = os.Setenv("DB_HOST", "localhost")
+=======
+	_ = os.Setenv("DB_HOST", "product-management-mongo-db")
+>>>>>>> feature/docker
 	c, _ := NewClient(db.Option{})
 	product := &models.Product{ProductID: "Product 002", Name: "Product Name 2",
 		Price: 4500, Status: "OffSelling", Quantity: 12}
@@ -88,7 +111,11 @@ func Test_client_DeleteHost(t *testing.T) {
 func Test_client_GetProductByID(t *testing.T) {
 	t.Parallel()
 	_ = os.Setenv("DB_PORT", "27017")
+<<<<<<< HEAD
 	_ = os.Setenv("DB_HOST", "localhost")
+=======
+	_ = os.Setenv("DB_HOST", "product-management-mongo-db")
+>>>>>>> feature/docker
 
 	c, _ := NewClient(db.Option{})
 	product := &models.Product{ProductID: "Product 003", Name: "Product Name 3", Price: 1399, Status: "OnSelling",
@@ -132,7 +159,11 @@ func Test_client_GetProductByID(t *testing.T) {
 func Test_client_UpdateProduct(t *testing.T) {
 	t.Parallel()
 	_ = os.Setenv("DB_PORT", "27017")
+<<<<<<< HEAD
 	_ = os.Setenv("DB_HOST", "localhost")
+=======
+	_ = os.Setenv("DB_HOST", "product-management-mongo-db")
+>>>>>>> feature/docker
 
 	c, _ := NewClient(db.Option{})
 	product := &models.Product{ProductID: "Product 004", Name: "Product Update", Price: 799, Status: "OffSelling",
