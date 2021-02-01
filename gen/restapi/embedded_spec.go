@@ -167,7 +167,7 @@ func init() {
           "type": "integer"
         },
         "Status": {
-          "type": "integer"
+          "type": "string"
         }
       }
     }
@@ -323,7 +323,7 @@ func init() {
           "type": "integer"
         },
         "Status": {
-          "type": "integer"
+          "type": "string"
         }
       }
     }
