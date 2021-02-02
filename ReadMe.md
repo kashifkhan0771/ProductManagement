@@ -1,4 +1,4 @@
-<pre>Product Management System v 1.0
+<pre>Product Management System v 1.1
 
 Language Used : GO Lang
 
