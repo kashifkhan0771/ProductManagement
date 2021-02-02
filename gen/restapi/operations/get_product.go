@@ -29,7 +29,7 @@ func NewGetProduct(ctx *middleware.Context, handler GetProductHandler) *GetProdu
 	return &GetProduct{Context: ctx, Handler: handler}
 }
 
-/* GetProduct swagger:route GET /Product/{ID} getProduct
+/* GetProduct swagger:route GET /product/{ID} getProduct
 
 return product based on UUID
 

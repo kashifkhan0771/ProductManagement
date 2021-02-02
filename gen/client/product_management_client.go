@@ -9,7 +9,9 @@ import (
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
 	"github.com/kashifkhan0771/ProductManagement/gen/client/operations"
+	"github.com/kashifkhan0771/ProductManagement/gen/client/service"
 )
 
 // Default product management HTTP client.
@@ -55,6 +57,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *ProductMan
 	cli := new(ProductManagement)
 	cli.Transport = transport
 	cli.Operations = operations.New(transport, formats)
+	cli.Service = service.New(transport, formats)
 	return cli
 }
 
@@ -101,6 +104,8 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 type ProductManagement struct {
 	Operations operations.ClientService
 
+	Service service.ClientService
+
 	Transport runtime.ClientTransport
 }
 
@@ -108,4 +113,5 @@ type ProductManagement struct {
 func (c *ProductManagement) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.Operations.SetTransport(transport)
+	c.Service.SetTransport(transport)
 }

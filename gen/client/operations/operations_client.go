@@ -84,7 +84,7 @@ func (a *Client) DeleteProduct(params *DeleteProductParams) (*DeleteProductNoCon
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteProduct",
 		Method:             "DELETE",
-		PathPattern:        "/Product/{ID}",
+		PathPattern:        "/product/{ID}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -118,7 +118,7 @@ func (a *Client) EditProduct(params *EditProductParams) (*EditProductOK, error) 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "editProduct",
 		Method:             "PUT",
-		PathPattern:        "/Product/{ID}",
+		PathPattern:        "/product/{ID}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -152,7 +152,7 @@ func (a *Client) GetProduct(params *GetProductParams) (*GetProductOK, error) {
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getProduct",
 		Method:             "GET",
-		PathPattern:        "/Product/{ID}",
+		PathPattern:        "/product/{ID}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},

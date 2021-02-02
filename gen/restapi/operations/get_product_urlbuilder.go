@@ -40,7 +40,7 @@ func (o *GetProductURL) SetBasePath(bp string) {
 func (o *GetProductURL) Build() (*url.URL, error) {
 	var _result url.URL
 
-	var _path = "/Product/{ID}"
+	var _path = "/product/{ID}"
 
 	id := o.ID
 	if id != "" {

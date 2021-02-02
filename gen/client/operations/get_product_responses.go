@@ -60,7 +60,7 @@ type GetProductOK struct {
 }
 
 func (o *GetProductOK) Error() string {
-	return fmt.Sprintf("[GET /Product/{ID}][%d] getProductOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /product/{ID}][%d] getProductOK  %+v", 200, o.Payload)
 }
 func (o *GetProductOK) GetPayload() *models.Product {
 	return o.Payload
@@ -91,7 +91,7 @@ type GetProductNotFound struct {
 }
 
 func (o *GetProductNotFound) Error() string {
-	return fmt.Sprintf("[GET /Product/{ID}][%d] getProductNotFound ", 404)
+	return fmt.Sprintf("[GET /product/{ID}][%d] getProductNotFound ", 404)
 }
 
 func (o *GetProductNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -112,7 +112,7 @@ type GetProductInternalServerError struct {
 }
 
 func (o *GetProductInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /Product/{ID}][%d] getProductInternalServerError ", 500)
+	return fmt.Sprintf("[GET /product/{ID}][%d] getProductInternalServerError ", 500)
 }
 
 func (o *GetProductInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

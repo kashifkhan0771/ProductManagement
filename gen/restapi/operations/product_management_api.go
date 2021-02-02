@@ -18,6 +18,8 @@ import (
 	"github.com/go-openapi/spec"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+
+	"github.com/kashifkhan0771/ProductManagement/gen/restapi/operations/service"
 )
 
 // NewProductManagementAPI creates a new ProductManagement instance
@@ -53,6 +55,9 @@ func NewProductManagementAPI(spec *loads.Document) *ProductManagementAPI {
 		}),
 		GetProductHandler: GetProductHandlerFunc(func(params GetProductParams) middleware.Responder {
 			return middleware.NotImplemented("operation GetProduct has not yet been implemented")
+		}),
+		ServiceListTasksHandler: service.ListTasksHandlerFunc(func(params service.ListTasksParams) middleware.Responder {
+			return middleware.NotImplemented("operation service.ListTasks has not yet been implemented")
 		}),
 	}
 }
@@ -98,6 +103,8 @@ type ProductManagementAPI struct {
 	EditProductHandler EditProductHandler
 	// GetProductHandler sets the operation handler for the get product operation
 	GetProductHandler GetProductHandler
+	// ServiceListTasksHandler sets the operation handler for the list tasks operation
+	ServiceListTasksHandler service.ListTasksHandler
 
 	// ServeError is called when an error is received, there is a default handler
 	// but you can set your own with this
@@ -186,6 +193,9 @@ func (o *ProductManagementAPI) Validate() error {
 	}
 	if o.GetProductHandler == nil {
 		unregistered = append(unregistered, "GetProductHandler")
+	}
+	if o.ServiceListTasksHandler == nil {
+		unregistered = append(unregistered, "service.ListTasksHandler")
 	}
 
 	if len(unregistered) > 0 {
@@ -282,15 +292,19 @@ func (o *ProductManagementAPI) initHandlerCache() {
 	if o.handlers["DELETE"] == nil {
 		o.handlers["DELETE"] = make(map[string]http.Handler)
 	}
-	o.handlers["DELETE"]["/Product/{ID}"] = NewDeleteProduct(o.context, o.DeleteProductHandler)
+	o.handlers["DELETE"]["/product/{ID}"] = NewDeleteProduct(o.context, o.DeleteProductHandler)
 	if o.handlers["PUT"] == nil {
 		o.handlers["PUT"] = make(map[string]http.Handler)
 	}
-	o.handlers["PUT"]["/Product/{ID}"] = NewEditProduct(o.context, o.EditProductHandler)
+	o.handlers["PUT"]["/product/{ID}"] = NewEditProduct(o.context, o.EditProductHandler)
 	if o.handlers["GET"] == nil {
 		o.handlers["GET"] = make(map[string]http.Handler)
 	}
-	o.handlers["GET"]["/Product/{ID}"] = NewGetProduct(o.context, o.GetProductHandler)
+	o.handlers["GET"]["/product/{ID}"] = NewGetProduct(o.context, o.GetProductHandler)
+	if o.handlers["GET"] == nil {
+		o.handlers["GET"] = make(map[string]http.Handler)
+	}
+	o.handlers["GET"]["/listProducts"] = service.NewListTasks(o.context, o.ServiceListTasksHandler)
 }
 
 // Serve creates a http handler to serve the API over HTTP

@@ -1,6 +1,7 @@
 package db
 
 import (
+	"context"
 	"log"
 
 	"github.com/kashifkhan0771/ProductManagement/models"
@@ -10,6 +11,7 @@ import (
 type DataStore interface {
 	AddProduct(Product *models.Product) (string, error)
 	GetProductByID(id string) (*models.Product, error)
+	ListProducts(ctx context.Context, filter map[string]interface{}, sortBy map[string]bool, offset, limit int) ([]*models.Product, error)
 	DeleteProduct(id string) error
 	UpdateProduct(Product *models.Product) error
 }

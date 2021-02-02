@@ -1,6 +1,8 @@
 package service
 
 import (
+	"context"
+
 	"github.com/kashifkhan0771/ProductManagement/models"
 )
 
@@ -26,6 +28,11 @@ func (s *Service) RetrieveProduct(id string) (*models.Product, error) {
 	}
 
 	return product, nil
+}
+
+// ListTasks retrieves list of task
+func (s *Service) ListProduct(ctx context.Context, filter map[string]interface{}, sortBy map[string]bool, offset, limit int) ([]*models.Product, error) {
+	return s.db.ListProducts(ctx, filter, sortBy, offset, limit)
 }
 
 // UpdateHost update in db.

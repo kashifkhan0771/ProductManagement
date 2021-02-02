@@ -56,7 +56,7 @@ type DeleteProductNoContent struct {
 }
 
 func (o *DeleteProductNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /Product/{ID}][%d] deleteProductNoContent ", 204)
+	return fmt.Sprintf("[DELETE /product/{ID}][%d] deleteProductNoContent ", 204)
 }
 
 func (o *DeleteProductNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -77,7 +77,7 @@ type DeleteProductBadRequest struct {
 }
 
 func (o *DeleteProductBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /Product/{ID}][%d] deleteProductBadRequest ", 400)
+	return fmt.Sprintf("[DELETE /product/{ID}][%d] deleteProductBadRequest ", 400)
 }
 
 func (o *DeleteProductBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -98,7 +98,7 @@ type DeleteProductInternalServerError struct {
 }
 
 func (o *DeleteProductInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /Product/{ID}][%d] deleteProductInternalServerError ", 500)
+	return fmt.Sprintf("[DELETE /product/{ID}][%d] deleteProductInternalServerError ", 500)
 }
 
 func (o *DeleteProductInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
