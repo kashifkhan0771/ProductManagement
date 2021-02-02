@@ -31,11 +31,11 @@ func (d *getProduct) Handle(params operations.GetProductParams) middleware.Respo
 	}
 
 	return operations.NewGetProductOK().WithPayload(&models.Product{
-		ID:       	product.ID,
-		ProductID:  product.ProductID,
-		Name: 		product.Name,
-		Price: 		product.Price,
-		Status:   	product.Status,
-		Quantity: 	product.Quantity,
+		ID:        product.ID,
+		ProductID: product.ProductID,
+		Name:      product.Name,
+		Price:     product.Price,
+		Status:    product.Status,
+		Quantity:  product.Quantity,
 	})
 }

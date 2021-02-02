@@ -1,6 +1,7 @@
 package mongo
 
 import (
+	"context"
 	"os"
 	"reflect"
 	"testing"
@@ -26,13 +27,12 @@ func Test_client_AddProduct(t *testing.T) {
 			name: "Success - Add Product to db",
 			args: args{product: &models.Product{
 				ProductID: "Product 001",
-				Name: "product name 1",
-				Price: 2300,
-				Status: "OnSelling",
-				Quantity: 34,
+				Name:      "product name 1",
+				Price:     2300,
+				Status:    "OnSelling",
+				Quantity:  34,
 			}},
 			wantErr: false,
-
 		},
 	}
 
@@ -127,6 +127,59 @@ func Test_client_GetProductByID(t *testing.T) {
 			}
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("GetProduct() got = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_client_ListProducts(t *testing.T) {
+	product1 := &models.Product{
+		ID:        "d672c138-c5ea-4e1d-b9cb-2a9df9ad50e6",
+		ProductID: "Product 001",
+		Name:      "Product Name 1",
+		Price:     2300,
+		Status:    "OffSelling",
+		Quantity:  33,
+	}
+	t.Parallel()
+	_ = os.Setenv("DB_PORT", "27017")
+	_ = os.Setenv("DB_HOST", "product-management-mongo-db")
+
+	c, _ := NewClient(db.Option{})
+	type args struct {
+		ctx    context.Context
+		filter map[string]interface{}
+		sortBy map[string]bool
+		offset int
+		limit  int
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    []*models.Product
+		wantErr bool
+	}{
+		{
+			name: "Success - list of product from db",
+			args: args{filter: map[string]interface{}{"status": "OffSelling"},
+				sortBy: map[string]bool{"name": true},
+				offset: 0, limit: 0},
+			want:    []*models.Product{product1},
+			wantErr: false,
+		},
+	}
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			got, err := c.ListProducts(tt.args.ctx, tt.args.filter, tt.args.sortBy, tt.args.offset, tt.args.limit)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("GetAllProducts() error = %v, wantErr %v", err, tt.wantErr)
+
+				return
+			}
+			if !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("GetAllProduct() got = %v, want %v", got, tt.want)
 			}
 		})
 	}

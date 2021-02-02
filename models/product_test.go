@@ -23,20 +23,20 @@ func TestProduct_Map(t *testing.T) {
 		{
 			name: "Success - Get Product 1 Map",
 			fields: fields{
-				ID: "001",
+				ID:        "001",
 				ProductID: "Prd 001",
-				Name: "Product Name 1",
-				Price: int64(2350),
-				Status: "OnSelling",
-				Quantity: int64(23),
+				Name:      "Product Name 1",
+				Price:     int64(2350),
+				Status:    "OnSelling",
+				Quantity:  int64(23),
 			},
 			want: map[string]interface{}{
-				"id": "001",
+				"id":         "001",
 				"product_id": "Prd 001",
-				"name": "Product Name 1",
-				"price": int64(2350),
-				"status": "OnSelling",
-				"quantity": int64(23),
+				"name":       "Product Name 1",
+				"price":      int64(2350),
+				"status":     "OnSelling",
+				"quantity":   int64(23),
 			},
 		},
 	}
@@ -77,15 +77,15 @@ func TestProduct_Names(t *testing.T) {
 		{
 			name: "Success - Get Product Field Names",
 			fields: fields{
-				ID: "001",
+				ID:        "001",
 				ProductID: "Prod 001",
-				Name: "Product Name 1",
-				Price: 2350,
-				Status: "OnSelling",
-				Quantity: 23,
+				Name:      "Product Name 1",
+				Price:     2350,
+				Status:    "OnSelling",
+				Quantity:  23,
+			},
+			want: []string{"id", "product_id", "name", "price", "status", "quantity"},
 		},
-		want: []string{"id", "product_id", "name", "price", "status", "quantity"},
-	},
 	}
 	for _, tt := range tests {
 		tt := tt

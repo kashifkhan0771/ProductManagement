@@ -34,7 +34,50 @@ paths:
           description: "internal server error"
         400:
           description: "bad request"
-  /Product/{ID}:
+  /listProducts:
+    get:
+      description: "retrieve list of task"
+      operationId: "listTasks"
+      tags:
+        - service
+      parameters:
+        - in: "query"
+          name: "name"
+          type: "string"
+        - in: "query"
+          name: "status"
+          type: "string"
+        - in: "query"
+          name: "user_id"
+          type: "string"
+        - in: "query"
+          name: "type"
+          type: "string"
+        - in: "query"
+          name: "sort"
+          type: "array"
+          items:
+            type: "string"
+        - in: "query"
+          name: "offset"
+          description: "The number of tasks to skip"
+          type: "integer"
+        - in: "query"
+          name: "limit"
+          description: "The number of tasks to return"
+          type: "integer"
+      responses:
+        200:
+          description: "tasks retrieved"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Product"
+        204:
+          description: "no tasks found"
+        500:
+          description: "internal server error"
+  /product/{ID}:
     get:
       operationId: "getProduct"
       parameters:

@@ -36,7 +36,107 @@ func init() {
   "host": "localhost:8080",
   "basePath": "/",
   "paths": {
-    "/Product/{ID}": {
+    "/addProduct": {
+      "post": {
+        "operationId": "addProduct",
+        "parameters": [
+          {
+            "description": "product's detail",
+            "name": "product",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Product added",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "400": {
+            "description": "bad request"
+          },
+          "409": {
+            "description": "product already exist"
+          },
+          "500": {
+            "description": "internal server error"
+          }
+        }
+      }
+    },
+    "/listProducts": {
+      "get": {
+        "description": "retrieve list of task",
+        "tags": [
+          "service"
+        ],
+        "operationId": "listTasks",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "status",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "user_id",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "in": "query"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "name": "sort",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "description": "The number of tasks to skip",
+            "name": "offset",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "description": "The number of tasks to return",
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "tasks retrieved",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          },
+          "204": {
+            "description": "no tasks found"
+          },
+          "500": {
+            "description": "internal server error"
+          }
+        }
+      }
+    },
+    "/product/{ID}": {
       "get": {
         "description": "return product based on UUID",
         "operationId": "getProduct",
@@ -107,38 +207,6 @@ func init() {
           },
           "400": {
             "description": "bad request"
-          },
-          "500": {
-            "description": "internal server error"
-          }
-        }
-      }
-    },
-    "/addProduct": {
-      "post": {
-        "operationId": "addProduct",
-        "parameters": [
-          {
-            "description": "product's detail",
-            "name": "product",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/Product"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Product added",
-            "schema": {
-              "$ref": "#/definitions/Product"
-            }
-          },
-          "400": {
-            "description": "bad request"
-          },
-          "409": {
-            "description": "product already exist"
           },
           "500": {
             "description": "internal server error"
@@ -192,7 +260,107 @@ func init() {
   "host": "localhost:8080",
   "basePath": "/",
   "paths": {
-    "/Product/{ID}": {
+    "/addProduct": {
+      "post": {
+        "operationId": "addProduct",
+        "parameters": [
+          {
+            "description": "product's detail",
+            "name": "product",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Product added",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "400": {
+            "description": "bad request"
+          },
+          "409": {
+            "description": "product already exist"
+          },
+          "500": {
+            "description": "internal server error"
+          }
+        }
+      }
+    },
+    "/listProducts": {
+      "get": {
+        "description": "retrieve list of task",
+        "tags": [
+          "service"
+        ],
+        "operationId": "listTasks",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "status",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "user_id",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "in": "query"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "name": "sort",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "description": "The number of tasks to skip",
+            "name": "offset",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "description": "The number of tasks to return",
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "tasks retrieved",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          },
+          "204": {
+            "description": "no tasks found"
+          },
+          "500": {
+            "description": "internal server error"
+          }
+        }
+      }
+    },
+    "/product/{ID}": {
       "get": {
         "description": "return product based on UUID",
         "operationId": "getProduct",
@@ -263,38 +431,6 @@ func init() {
           },
           "400": {
             "description": "bad request"
-          },
-          "500": {
-            "description": "internal server error"
-          }
-        }
-      }
-    },
-    "/addProduct": {
-      "post": {
-        "operationId": "addProduct",
-        "parameters": [
-          {
-            "description": "product's detail",
-            "name": "product",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/Product"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Product added",
-            "schema": {
-              "$ref": "#/definitions/Product"
-            }
-          },
-          "400": {
-            "description": "bad request"
-          },
-          "409": {
-            "description": "product already exist"
           },
           "500": {
             "description": "internal server error"

@@ -60,7 +60,7 @@ type EditProductOK struct {
 }
 
 func (o *EditProductOK) Error() string {
-	return fmt.Sprintf("[PUT /Product/{ID}][%d] editProductOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /product/{ID}][%d] editProductOK  %+v", 200, o.Payload)
 }
 func (o *EditProductOK) GetPayload() *models.Product {
 	return o.Payload
@@ -91,7 +91,7 @@ type EditProductBadRequest struct {
 }
 
 func (o *EditProductBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /Product/{ID}][%d] editProductBadRequest ", 400)
+	return fmt.Sprintf("[PUT /product/{ID}][%d] editProductBadRequest ", 400)
 }
 
 func (o *EditProductBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -112,7 +112,7 @@ type EditProductInternalServerError struct {
 }
 
 func (o *EditProductInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /Product/{ID}][%d] editProductInternalServerError ", 500)
+	return fmt.Sprintf("[PUT /product/{ID}][%d] editProductInternalServerError ", 500)
 }
 
 func (o *EditProductInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

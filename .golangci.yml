@@ -121,6 +121,7 @@ linters:
   #   - govet
   enable-all: true
   disable:
+    - lll
     - gofumpt
     - ifshort
     - scopelint
@@ -136,6 +137,11 @@ linters:
     - forbidigo
     - rowserrcheck
     - tparallel
+    - godot
+    - golint
+    - gocritic
+    - unconvert
+    - goimports
   # disable-all: false
   # presets:
   #   - bugs

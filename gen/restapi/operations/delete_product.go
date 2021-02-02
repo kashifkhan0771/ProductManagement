@@ -29,7 +29,7 @@ func NewDeleteProduct(ctx *middleware.Context, handler DeleteProductHandler) *De
 	return &DeleteProduct{Context: ctx, Handler: handler}
 }
 
-/* DeleteProduct swagger:route DELETE /Product/{ID} deleteProduct
+/* DeleteProduct swagger:route DELETE /product/{ID} deleteProduct
 
 DeleteProduct delete product API
 

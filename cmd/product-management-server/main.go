@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/loads"
@@ -22,8 +23,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
-	api := handlers.NewHandler(rt, swaggerSpec)
+	ctx := context.TODO()
+	api := handlers.NewHandler(ctx, rt, swaggerSpec)
 	server := restapi.NewServer(api)
 	defer func() {
 		if serverErr := server.Shutdown(); serverErr != nil {

@@ -29,7 +29,7 @@ func NewEditProduct(ctx *middleware.Context, handler EditProductHandler) *EditPr
 	return &EditProduct{Context: ctx, Handler: handler}
 }
 
-/* EditProduct swagger:route PUT /Product/{ID} editProduct
+/* EditProduct swagger:route PUT /product/{ID} editProduct
 
 EditProduct edit product API
 

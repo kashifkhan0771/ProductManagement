@@ -3,7 +3,7 @@ package mongo
 import (
 	"context"
 	"fmt"
-	
+
 	"github.com/pkg/errors"
 	uuid "github.com/satori/go.uuid"
 	"github.com/spf13/viper"
@@ -66,6 +66,28 @@ func (c *client) GetProductByID(id string) (*models.Product, error) {
 	return product, nil
 }
 
+func (c *client) ListProducts(ctx context.Context, filter map[string]interface{}, sortBy map[string]bool, offset, limit int) ([]*models.Product, error) {
+	productList := make([]*models.Product, 0)
+	collection := c.conn.Database(viper.GetString(config.DBName)).Collection(productCollection)
+	//filter[models.OffSelling] = bson.M{"$ne": models.OffSelling}
+	cursor, err := collection.Find(ctx, filter, options.Find().SetSort(sortOrder(sortBy)).SetSkip(int64(offset)).SetLimit(int64(limit)))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to retrieve list of tasks")
+	}
+	defer cursor.Close(ctx)
+
+	for cursor.Next(ctx) {
+		var product *models.Product
+		if err = cursor.Decode(&product); err != nil {
+			return nil, err
+		}
+		productList = append(productList, product)
+	}
+	log().Infof("tasks returned: %d", len(productList))
+
+	return productList, nil
+}
+
 func (c *client) DeleteProduct(id string) error {
 	collection := c.conn.Database(viper.GetString(config.DBName)).Collection(productCollection)
 	if _, err := collection.DeleteOne(context.TODO(), bson.M{"_id": id}); err != nil {
@@ -82,4 +104,15 @@ func (c *client) UpdateProduct(product *models.Product) error {
 	}
 
 	return nil
+}
+
+func sortOrder(spec map[string]bool) map[string]int {
+	sort := make(map[string]int)
+	for key, value := range spec {
+		if value {
+			sort[key] = 1
+		}
+	}
+
+	return sort
 }

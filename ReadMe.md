@@ -22,6 +22,7 @@ API's :
     - /product{ID} (get request)    - to get a product by id
     - /product{ID} (delete request) - to delete a product
     - /product{ID} (put request)    - to update/edit a product(JSON Format)
+    - /listProducts (get request)   - to get all products(read code for further information)
 
 Product Model :
     Product:

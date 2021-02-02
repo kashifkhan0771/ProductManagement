@@ -20,12 +20,12 @@ type addProduct struct {
 // Handle the add student request.
 func (d *addProduct) Handle(params operations.AddProductParams) middleware.Responder {
 	host := models.Product{
-		ID:       	params.Product.ID,
-		ProductID:  params.Product.ProductID,
-		Name:     	params.Product.Name,
-		Price: 		params.Product.Price,
-		Status:   	params.Product.Status,
-		Quantity: 	params.Product.Quantity,
+		ID:        params.Product.ID,
+		ProductID: params.Product.ProductID,
+		Name:      params.Product.Name,
+		Price:     params.Product.Price,
+		Status:    params.Product.Status,
+		Quantity:  params.Product.Quantity,
 	}
 
 	id, err := d.rt.Service().AddProduct(&host)
